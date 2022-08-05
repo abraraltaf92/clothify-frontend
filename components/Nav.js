@@ -10,7 +10,6 @@ const {AnimatePresence,motion}  = require("framer-motion");
 
 export default function Nav() {
     const {showCart,setShowCart,totalQty} = useStateContext();
-    const {user,error,loading} = useUser();
     return(
         <NavStyles>
         <Link href="/"> Clothify.</Link>

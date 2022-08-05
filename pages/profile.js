@@ -3,12 +3,12 @@ import { withPageAuthRequired, getSession } from "@auth0/nextjs-auth0";
 import styled from "styled-components";
 
 
-const stripe = require('stripe')(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY_TEST}`);
+const stripe = require('stripe')(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
 export const getServerSideProps = withPageAuthRequired({
     async getServerSideProps(ctx){
         const session = getSession(ctx.req,ctx.res);
-        const stripeId = session.user[`${process.env.BASE_URL}/stripe_customer_id`]
+        const stripeId = session.user[`${process.env.AUTH0_BASE_URL}/stripe_customer_id`]
         const paymentIntents = await stripe.paymentIntents.list({
             customer : stripeId
         })

@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 import { getSession } from '@auth0/nextjs-auth0';
-const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY_TEST}`);
+const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
 export default async function handler(req, res){
     const session = getSession(req,res);
@@ -8,7 +8,7 @@ export default async function handler(req, res){
 
     if(user){
 
-    const stripeId = user['http://localhost:3000/stripe_customer_id'] ;
+    const stripeId = user[`${process.env.AUTH0_BASE_URL}/stripe_customer_id`] ;
     if(req.method === 'POST'){
        try{
                 // create Session 
@@ -21,11 +21,11 @@ export default async function handler(req, res){
                         allowed_countries: ['IN']
                     },
                     customer: stripeId,
-                    // shipping_options: [
-                    //     {shipping_rate: "shr_1LT8x2SJmXLES4ATIV50lt5F"},
-                    //     {shipping_rate: "shr_1LT90iSJmXLES4AT4AeB5AJs"}
+                    shipping_options: [
+                        {shipping_rate: process.env.NEXT_PUBLIC_STRIPE_PREMIUM_SHIPPING_RATE},
+                        {shipping_rate: process.env.NEXT_PUBLIC_STRIPE_REGULAR_SHIPPING_RATE}
                         
-                    // ],
+                    ],
                     allow_promotion_codes:true,
                     line_items: req.body.map(item => {
                         return{
@@ -72,10 +72,10 @@ export default async function handler(req, res){
               },
     
               allow_promotion_codes: true,
-            //   shipping_options: [
-            //     { shipping_rate: "shr_1L7HGSJvB7fsxaM1DbSs7DeV" },
-            //     { shipping_rate: "shr_1L7HGyJvB7fsxaM1OpMXx2Fn" },
-            //   ],
+              shipping_options: [
+                {shipping_rate: process.env.NEXT_PUBLIC_STRIPE_PREMIUM_SHIPPING_RATE},
+                {shipping_rate: process.env.NEXT_PUBLIC_STRIPE_REGULAR_SHIPPING_RATE}
+            ],
               line_items: req.body.map((item) => {
                 return {
                   price_data: {
