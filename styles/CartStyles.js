@@ -3,8 +3,8 @@ import styled from "styled-components"
 //Animations
 const {motion} = require("framer-motion");
 const media = {
-    desktop: '@media(min-width: 1120px)',
-    mobile: '@media(max-width: 450px)',
+    desktop: '@media(min-width: 1230px)',
+    mobile: '@media(max-width: 485px)',
 }
 
 export const CartWrapper = styled(motion.div)`
@@ -22,7 +22,7 @@ export const CartWrapper = styled(motion.div)`
 
 
 export const CartStyle = styled(motion.div)`
-    width: 90%;
+    width: 100%;
     background: #f1f1f1;
     padding: 2rem 5rem;
     overflow-y: scroll;
@@ -33,8 +33,8 @@ export const CartStyle = styled(motion.div)`
 `;
 
 export const Card = styled(motion.div)`
-    /* display: flex; */
-    width: 80%;
+    display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     border-radius: 1rem;
@@ -43,25 +43,40 @@ export const Card = styled(motion.div)`
     padding: 2rem;
     margin: 2rem 0rem;
     img{
-        width: 8rem;
+        width: 6rem;
+        height: 6rem;
     }
-    ${media.desktop}{
+    ${media.mobile}{
+        flex-flow: column ;
+        
+        img{
+            align-self: flex-start;
+        }
+    }
+    /* ${media.desktop}{
         display: flex;
-        width: 100%;}
+        } */
 `;
 
 
 export const CardInfo = styled(motion.div)`
     /* width: 50%; */
-    div{
+    /* div{ */
         display: flex;
+        flex-direction: column ;
         flex-direction: space-between;
+    /* } */
+
+    ${media.mobile}{
+        margin-top: 1rem;
+        align-self: start;
     }
    
 `;
 
 export const EmptyStyle = styled(motion.div)`
-    position: absolute;
+    /* position: absolute; */
+    align-self: center;
     top: 0;
     transform: translate(-50%, 0%);
     display: flex;
@@ -69,14 +84,20 @@ export const EmptyStyle = styled(motion.div)`
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 80%;
+    width: 100%;
     h1{
         font-size: 2rem;
-        padding: 2rem;
+        /* padding: 2rem; */
     }
     svg{
+        
         font-size: 10rem;
         color: var(--secondary);
+    }
+    ${media.desktop}{
+        svg{
+            align-self:start;
+        }
     }
 `;
 
@@ -118,9 +139,13 @@ export const Quantity = styled.div`
         color: #494949
     }
 
-    ${media.mobile}{
+    /* ${media.mobile}{
         flex-flow: column nowrap;
-    }
+        div{
+            margin-top: 10px;
+            display: flex;
+        }
+    } */
 `;
 
 export const CancelButton = styled.div`

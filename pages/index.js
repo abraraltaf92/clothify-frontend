@@ -3,6 +3,7 @@ import { useQuery } from 'urql'
 import { PRODUCT_QUERY } from '../lib/query'
 import Product from "../components/Products"
 import {Gallery} from "../styles/Gallery"
+import {CircularProgress} from "@mui/material"
 
 export default function Home() {
 
@@ -12,7 +13,7 @@ export default function Home() {
   const {data,fetching,error} = results;
   const products = data?.products.data;
   //check for data coming in
-  if(fetching) return <p>Loading...</p>
+  if(fetching) return <CircularProgress width="100vh" height="100vh" align="center" color='primary' size='60'/>;
   if(error) return <p>Oh no...{error.message}</p>
 
   return (

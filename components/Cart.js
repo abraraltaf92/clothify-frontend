@@ -8,10 +8,10 @@ import {
     EmptyStyle, 
     Checkout,
     Cards,
-    Quantity, 
+    // Quantity, 
     CancelButton
  } from "../styles/CartStyles";
-//  import { Quantity } from "../styles/ProductDetails";
+ import { Quantity } from "../styles/ProductDetails";
 import {ImCancelCircle} from "react-icons/im"
 import {FaShoppingCart} from "react-icons/fa";
 import { AiFillMinusCircle,AiFillPlusCircle} from "react-icons/ai";
@@ -98,16 +98,17 @@ const handleCheckout = async () =>{
                         variants={card}   
                         key={item.slug}
                         layout >
-                        <img src={item.image.data.attributes.formats.thumbnail.url} 
-                        alt={item.title}/>
+                        <img src={item.image.data.attributes.formats.thumbnail.url} alt={item.title}/>
                         <CardInfo>
                             <h3>{item.title}</h3>
                             <h3>₹ {item.price}</h3>
                             <Quantity>
                                 <span>Quantity</span>
+                                
                                 <button  onClick={() => onRemove(item)}><AiFillMinusCircle /></button>
                                 <p>{item.quantity}</p>
                                 <button onClick={() => onAdd(item,1)}><AiFillPlusCircle/></button>
+                               
                             </Quantity>
                         </CardInfo>
                         </Card>

@@ -9,7 +9,7 @@ export default function Product({product}){
         <ProductStyle>
             <Link href={`product/${slug}`}>
             <div>
-                <img src={image.data.attributes.formats.small.url} alt="" />
+                <img src={image.data.attributes.formats.medium.url} alt=""  height="200px"  />
             </div>
             </Link>
             <h2>{title}</h2>
