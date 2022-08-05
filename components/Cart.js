@@ -7,9 +7,10 @@ import {
     CardInfo, 
     EmptyStyle, 
     Checkout,
-    Cards 
+    Cards,
+    Quantity 
  } from "../styles/CartStyles";
- import { Quantity } from "../styles/ProductDetails";
+//  import { Quantity } from "../styles/ProductDetails";
 import {FaShoppingCart} from "react-icons/fa";
 import { AiFillMinusCircle,AiFillPlusCircle} from "react-icons/ai";
 import getStripe from "../lib/getStripe";

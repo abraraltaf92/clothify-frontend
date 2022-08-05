@@ -3,7 +3,8 @@ import styled from "styled-components"
 //Animations
 const {motion} = require("framer-motion");
 const media = {
-    desktop: '@media(min-width: 1000px)',
+    desktop: '@media(min-width: 1120px)',
+    mobile: '@media(max-width: 450px)',
 }
 
 export const CartWrapper = styled(motion.div)`
@@ -21,7 +22,7 @@ export const CartWrapper = styled(motion.div)`
 
 
 export const CartStyle = styled(motion.div)`
-    width: 70%;
+    width: 90%;
     background: #f1f1f1;
     padding: 2rem 5rem;
     overflow-y: scroll;
@@ -33,6 +34,7 @@ export const CartStyle = styled(motion.div)`
 
 export const Card = styled(motion.div)`
     /* display: flex; */
+    width: 80%;
     align-items: center;
     justify-content: space-between;
     border-radius: 1rem;
@@ -44,7 +46,8 @@ export const Card = styled(motion.div)`
         width: 8rem;
     }
     ${media.desktop}{
-        display: flex}
+        display: flex;
+        width: 100%;}
 `;
 
 
@@ -90,3 +93,32 @@ export const Checkout = styled(motion.div)`
 `;
 
 export const Cards = styled(motion.div)``
+
+export const Quantity = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 1rem 0rem;
+
+    button {
+        background:transparent;
+        border:none;
+        display:flex;
+        font-size:1.5rem;
+        padding: 0rem 0.5rem; 
+        margin-bottom:0
+    }
+    p{
+        width:1rem;
+        text-align:center;
+    }
+    span{
+        color: var(--secondary);
+    }
+    svg{
+        color: #494949
+    }
+
+    ${media.mobile}{
+        flex-flow: column nowrap;
+    }
+`;
