@@ -2,6 +2,9 @@ import styled from "styled-components"
 
 //Animations
 const {motion} = require("framer-motion");
+const media = {
+    desktop: '@media(min-width: 1000px)',
+}
 
 export const CartWrapper = styled(motion.div)`
     position: fixed;
@@ -18,15 +21,18 @@ export const CartWrapper = styled(motion.div)`
 
 
 export const CartStyle = styled(motion.div)`
-    width: 40%;
+    width: 70%;
     background: #f1f1f1;
     padding: 2rem 5rem;
     overflow-y: scroll;
     position: relative;
+    ${media.desktop}{
+        width: 40%;
+    }
 `;
 
 export const Card = styled(motion.div)`
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: space-between;
     border-radius: 1rem;
@@ -37,15 +43,18 @@ export const Card = styled(motion.div)`
     img{
         width: 8rem;
     }
+    ${media.desktop}{
+        display: flex}
 `;
 
 
 export const CardInfo = styled(motion.div)`
-    width: 50%;
+    /* width: 50%; */
     div{
         display: flex;
         flex-direction: space-between;
     }
+   
 `;
 
 export const EmptyStyle = styled(motion.div)`

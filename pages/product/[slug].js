@@ -11,12 +11,14 @@ import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import { useStateContext } from "../../lib/context";
 import toast from "react-hot-toast"
 import { useEffect } from "react";
+import { useMediaQuery } from "@mui/material";
 
 export default function ProductDetails(){
 
     const {query} = useRouter();
     const {qty,increaseQty,decreaseQty,cartItems,onAdd,setQty}  = useStateContext();
-    
+    const isDesktop = useMediaQuery('(min-width:600px)');
+    console.log(isDesktop)
     useEffect(() =>  {
         setQty(1)
     },[])
