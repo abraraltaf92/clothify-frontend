@@ -122,3 +122,10 @@ export const Quantity = styled.div`
         flex-flow: column nowrap;
     }
 `;
+
+export const CancelButton = styled.div`
+cursor:pointer;
+font-size: 40px;
+margin-left:-50px;
+margin-top:-10px
+`;

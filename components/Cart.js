@@ -8,9 +8,11 @@ import {
     EmptyStyle, 
     Checkout,
     Cards,
-    Quantity 
+    Quantity, 
+    CancelButton
  } from "../styles/CartStyles";
 //  import { Quantity } from "../styles/ProductDetails";
+import {ImCancelCircle} from "react-icons/im"
 import {FaShoppingCart} from "react-icons/fa";
 import { AiFillMinusCircle,AiFillPlusCircle} from "react-icons/ai";
 import getStripe from "../lib/getStripe";
@@ -67,13 +69,16 @@ const handleCheckout = async () =>{
         initial={{opacity: 0}}
         exit={{opacity: 0}}
         onClick={() => setShowCart(false)}>
+            
             <CartStyle
             initial={{x: '50%'}}    
             animate={{x:'0%'}}
             exit={{x:'50%'}}
             transition={{type: 'tween'}}
             onClick={(e) => e.stopPropagation()}>
-
+                <CancelButton onClick={ () => setShowCart(false)}>
+                <ImCancelCircle/>
+                </CancelButton>
                 {cartItems.length < 1 && (
                 <EmptyStyle
                 initial={{opacity: 0, scale: 0.8}}
